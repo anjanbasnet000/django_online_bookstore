@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #Local
-    'users.apps.UsersConfig', #new apps
+    'users.apps.UsersConfig', #Users
+    'pages.apps.PagesConfig', #pages
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser' #new
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'bookstore_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], #configuring templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
