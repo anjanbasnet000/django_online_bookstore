@@ -19,14 +19,14 @@ class HomepageTests(SimpleTestCase):
         self.assertTemplateUsed(self.response, 'home.html')
 
     def test_homepage_contains_correct_html(self):   #Testing for corect html in homepage.
-        self.assertContains(self.response, 'home')
+        self.assertContains(self.response, 'Homepage')
 
     def test_homepage_does_not_contain_incorrect_html(self):  
         self.assertNotContains(
             self.response, 'Hi there! I should not be on the page.'
         )
 
-    def test_homepage_url_resolves_homepageview(self):
+    def test_homepage_url_resolves_homepageview(self):   #Testing Homepageview
         view = resolve('/')
         self.assertEqual(
             view.func.__name__,
