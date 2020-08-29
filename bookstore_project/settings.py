@@ -38,10 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #Third-party Apps
+    'crispy_forms',
+
     #Local
     'users.apps.UsersConfig', #Users
     'pages.apps.PagesConfig', #pages
 ]
+
+#django-crispy-forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4' #crispy_form package
+
+
 
 AUTH_USER_MODEL = 'users.CustomUser' #new
 
@@ -128,6 +136,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'

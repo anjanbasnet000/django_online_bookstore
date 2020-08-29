@@ -1,0 +1,1 @@
+console.log('Javascrpit code is herw')
