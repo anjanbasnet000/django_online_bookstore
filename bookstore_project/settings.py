@@ -37,21 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     #Third-party Apps
     'crispy_forms',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
 
     #Local
     'users.apps.UsersConfig', #Users
     'pages.apps.PagesConfig', #pages
 ]
 
-#django-crispy-forms
-CRISPY_TEMPLATE_PACK = 'bootstrap4' #crispy_form package
-
-
-
-AUTH_USER_MODEL = 'users.CustomUser' #new
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -87,7 +86,8 @@ WSGI_APPLICATION = 'bookstore_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
+#Setting up Postgresql
+DATABASES = {                   
      'default': {
         'ENGINE': 'django.db.backends.postgresql', 
         'NAME': 'postgres',
@@ -138,12 +138,36 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_FINDERS = [
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]     #static files path 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')        #static files root static
+STATICFILES_FINDERS = [                                     #setting up static files finders
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+AUTH_USER_MODEL = 'users.CustomUser'  # For CustomUserModel
+
+#django-crispy-forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # crispy_form package
+
+#Django-allauth Config
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+ACCOUNT_LOGOUT_REDIRECT = 'home'
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_SESSION_REMEMBER =True
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+# Allauth email backends configuation.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+
+
