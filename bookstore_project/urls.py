@@ -7,4 +7,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')), #For auth model
     
     path('', include('pages.urls')),     #Local apps pages
+    path('books/', include('books.urls')),  #URL path for books app
 ]
