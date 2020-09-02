@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     #Local
     'users.apps.UsersConfig', #Users
     'pages.apps.PagesConfig', #pages
-    'books.apps.BooksConfig'  #Books
+    'books.apps.BooksConfig', #Books
+    'orders.apps.OrdersConfig' #Orders
 ]
 
 
@@ -175,5 +176,10 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 DEFAULT_FROM_EMAIL = 'admin@kitabpasal.com'
+
+
+#Stripe 
+STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
+STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
 
 

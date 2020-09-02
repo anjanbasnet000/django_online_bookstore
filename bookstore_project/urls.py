@@ -10,4 +10,5 @@ urlpatterns = [
     
     path('', include('pages.urls')),     #Local apps pages
     path('books/', include('books.urls')),  #URL path for books app
+    path('orders/', include('orders.urls')),  #url path for orders
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
