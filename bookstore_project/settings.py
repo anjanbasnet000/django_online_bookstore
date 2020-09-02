@@ -144,6 +144,9 @@ STATICFILES_FINDERS = [                                     #setting up static f
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+MEDIA_URL = '/media/'  #It is the URL  we can use in our templates for the files.
+MEDIA_ROOT  = os.path.join(BASE_DIR, 'media') #The absolute file system path to the directory for user- uploaded files
+
 AUTH_USER_MODEL = 'users.CustomUser'  # For CustomUserModel
 
 #django-crispy-forms
