@@ -18,6 +18,11 @@ class Book(models.Model):
     buy = models.DecimalField(max_digits=6, decimal_places=2)
     rent = models.DecimalField(max_digits=6, decimal_places=2, blank=True)
     cover = models.ImageField(upload_to='covers/', blank=True)
+
+    class Meta:
+        permissions = [
+            ('special_status', 'Can read all books'),
+        ]
     
 
     def __str__(self):
