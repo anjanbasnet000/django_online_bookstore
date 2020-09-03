@@ -12,3 +12,9 @@ urlpatterns = [
     path('books/', include('books.urls')),  #URL path for books app
     path('orders/', include('orders.urls')),  #url path for orders
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
